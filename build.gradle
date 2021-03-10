@@ -1,0 +1,49 @@
+plugins {
+  id 'java'
+  id 'idea'
+}
+
+repositories {
+  mavenCentral()
+}
+
+sourceSets {
+  main {
+    java {
+      srcDirs = ["${projectDir}/src/main/java", "${projectDir}/src/main/generated"]
+    }
+  }
+}
+
+group = "com.toolpar"
+
+sourceCompatibility = '1.11'
+
+compileJava {
+  options.annotationProcessorGeneratedSourcesDirectory = new File(projectDir, "/src/main/generated")
+}
+
+ext {
+  vertxVersion = "4.0.2"
+}
+
+dependencies {
+  implementation "io.vertx:vertx-codegen:${vertxVersion}:processor"
+  implementation "io.vertx:vertx-core:${vertxVersion}"
+  implementation "io.vertx:vertx-sql-client:${vertxVersion}"
+  implementation "io.vertx:vertx-sql-client-templates:${vertxVersion}"
+  implementation "io.vertx:vertx-pg-client:${vertxVersion}"
+  implementation "org.testcontainers:postgresql:1.12.4"
+  implementation "io.vertx:vertx-mysql-client:${vertxVersion}"
+  implementation "org.testcontainers:mysql:1.12.4"
+  implementation "mysql:mysql-connector-java:8.0.22"
+  annotationProcessor "io.vertx:vertx-codegen:${vertxVersion}:processor"
+}
+
+idea {
+  module {
+    generatedSourceDirs += new File(projectDir, 'src/main/generated')
+    outputDir file('build/classes/java/main')
+    testOutputDir file('build/classes/java/test')
+  }
+}
