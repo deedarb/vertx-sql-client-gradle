@@ -14,7 +14,7 @@ import io.vertx.sqlclient.templates.annotations.RowMapped;
 @ParametersMapped(formatter = SnakeCase.class)
 public class User {
 
-  private int id;
+  private Integer id;
   private String firstName;
   private String lastName;
 
@@ -25,11 +25,11 @@ public class User {
   public User() {
   }
 
-  public int getId() {
+  public Integer getId() {
     return id;
   }
 
-  public User setId(int id) {
+  public User setId(Integer id) {
     this.id = id;
     return this;
   }

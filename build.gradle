@@ -15,7 +15,7 @@ sourceSets {
   }
 }
 
-group = "com.toolpar"
+group = "org.demo"
 
 sourceCompatibility = '1.11'
 
@@ -24,7 +24,7 @@ compileJava {
 }
 
 ext {
-  vertxVersion = "4.0.2"
+  vertxVersion = "4.0.3"
 }
 
 dependencies {
